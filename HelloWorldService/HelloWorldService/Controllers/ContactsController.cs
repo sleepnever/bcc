@@ -21,12 +21,14 @@ namespace HelloWorldService.Controllers
         // GET: api/Contacts/5
         public Contact Get(int id)
         {
-            return null;
+            return contacts.Where(c => c.Id == id).FirstOrDefault();
         }
 
         // POST: api/Contacts
         public void Post([FromBody]Contact value)
         {
+            int len = contacts.Count();
+            value.Id = len + 1;
             contacts.Add(value); // This will add the contact to the list
         }
 
@@ -38,6 +40,14 @@ namespace HelloWorldService.Controllers
         // DELETE: api/Contacts/5
         public void Delete(int id)
         {
+            if (id >= 0)
+            {
+                Contact contact = contacts.Where(c => c.Id == id).FirstOrDefault();
+                if (contact != null)
+                {
+                    contacts.Remove(contact);
+                }
+            }
         }
     }
 }
