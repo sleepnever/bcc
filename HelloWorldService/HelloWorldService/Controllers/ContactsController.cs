@@ -75,13 +75,12 @@ namespace HelloWorldService.Controllers
             Contact contact = contacts.FirstOrDefault(c => c.Id == id);
             HttpResponseMessage httpResponse = new HttpResponseMessage();
 
-            if ((id < 0) || contact == null)
+            if (contact == null || contacts.RemoveAll(c => c.Id == id) == 0)
             {
                 httpResponse.StatusCode = HttpStatusCode.NotFound;
             }
             else
             {
-                contacts.RemoveAll(c => c.Id == id);
                 httpResponse.StatusCode = HttpStatusCode.OK;
             }
             return httpResponse;
