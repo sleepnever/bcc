@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using HelloWorldService.Models;
+using Newtonsoft.Json;
 
 namespace HelloWorldService.Controllers
 {
@@ -25,13 +26,32 @@ namespace HelloWorldService.Controllers
         }
 
         // POST: api/Contacts
-        public void Post([FromBody]Contact contact)
+        public HttpResponseMessage Post([FromBody]Contact contact)
         {
-            if (contact != null)
+            HttpResponseMessage responseMessage = new HttpResponseMessage();
+
+            if (contact == null)
             {
+                responseMessage.StatusCode = HttpStatusCode.BadRequest;
+            }
+            else
+            {
+
                 contact.Id = contacts.Count() + 1;
                 contacts.Add(contact); // This will add the contact to the list
+
+                // serialize the string into json
+                string resultJson = JsonConvert.SerializeObject(contact);
+
+                // create your payload content
+                StringContent postContent = new StringContent(resultJson, System.Text.Encoding.UTF8, "application/json");
+
+                // return to http the payload AND the response message
+                responseMessage.StatusCode = HttpStatusCode.Created;
+                responseMessage.Content = postContent;
             }
+
+            return responseMessage;
         }
 
         // PUT: api/Contacts/5
@@ -50,21 +70,21 @@ namespace HelloWorldService.Controllers
         }
 
         // DELETE: api/Contacts/5
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
-            if (id >= 0)
-            {
-                /*
-                Contact contact = contacts.FirstOrDefault(c => c.Id == id);
-                if (contact != null)
-                {
-                    contacts.Remove(contact);
-                }
-                */
+            Contact contact = contacts.FirstOrDefault(c => c.Id == id);
+            HttpResponseMessage httpResponse = new HttpResponseMessage();
 
-                // better way
-                contacts.RemoveAll(c => c.Id == id);
+            if ((id < 0) || contact == null)
+            {
+                httpResponse.StatusCode = HttpStatusCode.NotFound;
             }
+            else
+            {
+                contacts.RemoveAll(c => c.Id == id);
+                httpResponse.StatusCode = HttpStatusCode.OK;
+            }
+            return httpResponse;
         }
     }
 }
