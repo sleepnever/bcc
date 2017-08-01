@@ -14,18 +14,21 @@ namespace HelloWorldService.Controllers
         public static List<Contact> contacts = new List<Contact>();
 
         // GET: api/Contacts
+        [HttpGet]
         public IEnumerable<Contact> Get()
         {
             return contacts;
         }
 
         // GET: api/Contacts/5
+        [HttpGet]
         public Contact Get(int id)
         {
             return contacts.FirstOrDefault(c => c.Id == id);
         }
 
         // POST: api/Contacts
+        [HttpPost]
         public HttpResponseMessage Post([FromBody]Contact contact)
         {
             HttpResponseMessage responseMessage = new HttpResponseMessage();
@@ -56,6 +59,7 @@ namespace HelloWorldService.Controllers
 
         // PUT: api/Contacts/5
         // PUT is when the object already exists and you want to modify the data
+        [HttpPut]
         public void Put(int id, [FromBody]Contact contact)
         {
             // return the matching contact object
@@ -70,6 +74,7 @@ namespace HelloWorldService.Controllers
         }
 
         // DELETE: api/Contacts/5
+        [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
             Contact contact = contacts.FirstOrDefault(c => c.Id == id);
