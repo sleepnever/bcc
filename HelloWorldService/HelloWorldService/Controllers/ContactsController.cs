@@ -6,9 +6,34 @@ using System.Net.Http;
 using System.Web.Http;
 using HelloWorldService.Models;
 using Newtonsoft.Json;
+using System.Web.Http.Filters;
 
 namespace HelloWorldService.Controllers
 {
+    public class ExceptionHandlingAttribute : ExceptionFilterAttribute
+    {
+        // ** This can also be done in Global.asax.cs, so you don't have to remember to do this on every class. Entire service is protected
+        //    no matter how many controllers you add
+        //    There is a commented out line in there, so that everything gets this class
+        // this is basically our "catch block"
+        // the 'actionExecutedContext' gives us an Exception, the Request object, the Response object (if exists), which is great for logging
+        public override void OnException(HttpActionExecutedContext actionExecutedContext)
+        {
+            var response = new
+            {
+                Status = "error",
+                Message = actionExecutedContext.Exception.Message,
+            };
+            var httpResponseMessage = new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new ObjectContent(response.GetType(), response, new System.Net.Http.Formatting.JsonMediaTypeFormatter())
+            };
+            throw new HttpResponseException(httpResponseMessage);
+        }
+    }
+
+    [ExceptionHandling] // <--- Exception attribute class above
     public class ContactsController : ApiController
     {
         public static List<Contact> contacts = new List<Contact>();
@@ -17,6 +42,31 @@ namespace HelloWorldService.Controllers
         [HttpGet]
         public IEnumerable<Contact> Get()
         {
+            // Try/Catch is one way to do this, but it makes for really messy code. The other way is to create an ExceptionHandling Attribute
+            //try
+            //{
+                int x = 1;
+                x = x / (x - 1); // if you try and write x / 0, .NET is smart enough to say this won't compile, so this is a trick
+            //}
+            //catch (Exception ex)
+            //{
+            //    // new Anonymous type
+            //    var response = new
+            //    {
+            //        Status = "error",
+            //        Message = ex.Message,
+            //    };
+
+            //    var httpResponseMessage = new HttpResponseMessage
+            //    {
+            //        StatusCode = HttpStatusCode.InternalServerError, // this can't be BadRequest because there's nothing coming into Get()
+            //        Content = new ObjectContent(response.GetType(), response, new System.Net.Http.Formatting.JsonMediaTypeFormatter())
+            //    };
+
+            //    throw new HttpResponseException(httpResponseMessage);
+
+            //}
+
             return contacts;
         }
 
