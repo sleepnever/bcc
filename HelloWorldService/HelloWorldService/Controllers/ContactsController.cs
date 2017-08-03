@@ -7,11 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace HelloWorldService.Controllers
 {
 	[ExceptionHandling] // <--- Exception attribute class above
-    public class ContactsController : ApiController
+	[EnableCors(origins: "*", headers: "*", methods: "*")]
+	public class ContactsController : ApiController
     {
 		// NOTE: "static" allows us to keep contacts for the life of the service
 		//		 otherewise the ContactsController ctor gets called every single time

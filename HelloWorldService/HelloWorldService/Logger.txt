@@ -14,3 +14,19 @@ Contacts:
  Uri=http://localhost:5794/api/Contacts
  Method=POST
  ElapsedTimeMs=35
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=GET
+ ElapsedTimeMs=33
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=GET
+ ElapsedTimeMs=66
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=GET
+ ElapsedTimeMs=0
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=GET
+ ElapsedTimeMs=15

@@ -16,7 +16,7 @@ namespace HelloWorldService.Tests
         public void Setup()
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost/helloworldservice/api/");
+            client.BaseAddress = new Uri("http://localhost:5794/helloworldservice/api/");
         }
 
         [TestMethod]
