@@ -1,0 +1,8 @@
+Contacts : 
+ Uri=http://localhost:5794/api/contacts
+ Method=GET
+ ElapsedTimeMs=15713
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=GET
+ ElapsedTimeMs=8237
