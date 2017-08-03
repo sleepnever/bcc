@@ -59,6 +59,11 @@ namespace HelloWorldService.Controllers
         }
 
         // POST: api/Contacts
+		/// <summary>
+		/// This is a POST
+		/// </summary>
+		/// <param name="contact">value parameter</param>
+		/// <returns>HttpResponseMessage</returns>
         [HttpPost]
         public HttpResponseMessage Post([FromBody]Contact contact)
         {

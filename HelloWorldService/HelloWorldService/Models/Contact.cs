@@ -6,19 +6,25 @@ using Newtonsoft.Json;
 
 namespace HelloWorldService.Models
 {
-    /*
+	/*
      * By default, all fields in a class are serialized. You have two ways to handle this. You can use the opt in method.
      * The optin property means that every property you want serialized must have a JsonProperty tag otherwise it will not be serialized.
      * The second method is to use the ignore attribute. When a field is tagged with this attribute, the field will not be serialized at all.
      *      [JsonIgnore]
      */
-    // [JsonObject(MemberSerialization.OptIn)]
+	/// <summary>
+	/// This is the Contact Class
+	/// </summary>
+	[JsonObject(MemberSerialization.OptIn)]
     public class Contact
     {
         [JsonProperty("id")] // publically, we show 'id', internally it is still 'Id', so we don't break anything
         public int Id { get; set; }
         public string Name { get; set; }
 
+		/// <summary>
+		/// DateTime the Contact was added
+		/// </summary>
         [JsonProperty("date_added")]
         public DateTime DateAdded { get; set; }
         public Phone[] Phones { get; set; }

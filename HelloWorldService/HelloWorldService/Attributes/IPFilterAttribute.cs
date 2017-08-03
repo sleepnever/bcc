@@ -22,7 +22,8 @@ namespace HelloWorldService.Attributes
 			string ipAddress = HttpContext.Current.Request.UserHostAddress;
 			if (ipAddress == "::1")
 			{
-				throw new HttpResponseException(HttpStatusCode.Forbidden);
+				// uncomment if we really want to block
+				//throw new HttpResponseException(HttpStatusCode.Forbidden);
 			}
 
 			base.OnActionExecuting(actionContext);
