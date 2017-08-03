@@ -13,6 +13,10 @@ namespace HelloWorldService.Controllers
 	[ExceptionHandling] // <--- Exception attribute class above
     public class ContactsController : ApiController
     {
+		// NOTE: "static" allows us to keep contacts for the life of the service
+		//		 otherewise the ContactsController ctor gets called every single time
+		//		 clearing it out. This is because the controller should be stateless,
+		//		 where the dB should be your state. So this is a hack for now
         public static List<Contact> contacts = new List<Contact>();
 
         // GET: api/Contacts
