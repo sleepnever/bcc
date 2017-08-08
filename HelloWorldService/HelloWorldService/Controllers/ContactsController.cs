@@ -13,7 +13,8 @@ namespace HelloWorldService.Controllers
 {
 	[ExceptionHandling] // <--- Exception attribute class above
 	[EnableCors(origins: "*", headers: "*", methods: "*")]
-	[Authenticator] // attribute is for Token Validation
+	//[Authenticator] // attribute is for Token Validation
+	[RoutePrefix("api/contacts")]
 	public class ContactsController : ApiController
     {
 		// NOTE: "static" allows us to keep contacts for the life of the service
@@ -24,7 +25,7 @@ namespace HelloWorldService.Controllers
 
         // GET: api/Contacts
         [HttpGet]
-        public IEnumerable<Contact> Get()
+        public IEnumerable<Contact> GetContacts()
         {
             // Try/Catch is one way to do this, but it makes for really messy code. The other way is to create an ExceptionHandling Attribute
             //try
@@ -56,10 +57,17 @@ namespace HelloWorldService.Controllers
 
         // GET: api/Contacts/5
         [HttpGet]
-        public Contact Get(int id)
+        public Contact GetContactById(int id)
         {
             return contacts.FirstOrDefault(c => c.Id == id);
         }
+
+		[HttpGet]
+		[Route("hidden/{id}")]
+		public Contact GetHiddenContactById(int id)
+		{
+			return new Contact() { Id = id, Name = "SysAdmin", DateAdded = DateTime.UtcNow };
+		}
 
         // POST: api/Contacts
 		/// <summary>
@@ -102,7 +110,7 @@ namespace HelloWorldService.Controllers
         public void Put(int id, [FromBody]Contact contact)
         {
             // return the matching contact object
-            Contact existingContact = Get(id);
+            Contact existingContact = GetContactById(id);
             if (existingContact != null)
             {
                 if (!String.IsNullOrEmpty(contact.Name)) 

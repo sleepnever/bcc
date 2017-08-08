@@ -107,6 +107,7 @@
     <Compile Include="Attributes\ExceptionHandlingAttribute.cs" />
     <Compile Include="Attributes\IPFilterAttribute.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\Contactv2Controller.cs" />
     <Compile Include="Controllers\TokenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

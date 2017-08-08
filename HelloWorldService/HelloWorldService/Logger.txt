@@ -102,3 +102,43 @@ Contacts:
  Uri=http://localhost:5794/api/contacts
  Method=POST
  ElapsedTimeMs=5
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=42
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=52
+Contacts: 
+ Uri=http://localhost:5794/api/contacts/hidden
+ Method=GET
+ ElapsedTimeMs=19
+Contacts: 
+ Uri=http://localhost:5794/api/contacts/hidden
+ Method=GET
+ ElapsedTimeMs=24
+Contacts: 
+ Uri=http://localhost:5794/api/contacts/hidden/666
+ Method=GET
+ ElapsedTimeMs=2
+Contacts: 
+ Uri=http://localhost:5794/api/contacts/hidden/666
+ Method=GET
+ ElapsedTimeMs=8
+Contacts: 
+ Uri=http://localhost:5794/api/contacts/hidden/666
+ Method=GET
+ ElapsedTimeMs=29
+Contacts: 
+ Uri=http://localhost:5794/api/contacts/hidden/666
+ Method=GET
+ ElapsedTimeMs=39
+Contacts: 
+ Uri=http://localhost:5794/api/contacts/hidden/666
+ Method=GET
+ ElapsedTimeMs=31
+Contacts: 
+ Uri=http://localhost:5794/api/contacts/hidden/666
+ Method=GET
+ ElapsedTimeMs=42

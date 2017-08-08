@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace HelloWorldService.Models
 {
@@ -20,6 +17,7 @@ namespace HelloWorldService.Models
     {
         [JsonProperty("id")] // publically, we show 'id', internally it is still 'Id', so we don't break anything
         public int Id { get; set; }
+		[JsonProperty("name")]
         public string Name { get; set; }
 
 		/// <summary>
