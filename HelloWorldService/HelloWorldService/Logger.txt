@@ -30,3 +30,75 @@ Contacts:
  Uri=http://localhost:5794/api/contacts
  Method=GET
  ElapsedTimeMs=15
+Token: 
+ Uri=http://localhost:5794/api/token
+ Method=POST
+ ElapsedTimeMs=133
+Token: 
+ Uri=http://localhost:5794/api/token
+ Method=POST
+ ElapsedTimeMs=146
+Token: 
+ Uri=http://localhost:5794/api/token
+ Method=POST
+ ElapsedTimeMs=117
+Token: 
+ Uri=http://localhost:5794/api/token
+ Method=POST
+ ElapsedTimeMs=127
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=1
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=7
+Token: 
+ Uri=http://localhost:5794/api/token
+ Method=POST
+ ElapsedTimeMs=17
+Token: 
+ Uri=http://localhost:5794/api/token
+ Method=POST
+ ElapsedTimeMs=22
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=0
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=4
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=0
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=8
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=0
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=4
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=0
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=4
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=0
+Contacts: 
+ Uri=http://localhost:5794/api/contacts
+ Method=POST
+ ElapsedTimeMs=5

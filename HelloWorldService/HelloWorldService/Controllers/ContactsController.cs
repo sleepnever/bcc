@@ -13,6 +13,7 @@ namespace HelloWorldService.Controllers
 {
 	[ExceptionHandling] // <--- Exception attribute class above
 	[EnableCors(origins: "*", headers: "*", methods: "*")]
+	[Authenticator] // attribute is for Token Validation
 	public class ContactsController : ApiController
     {
 		// NOTE: "static" allows us to keep contacts for the life of the service
